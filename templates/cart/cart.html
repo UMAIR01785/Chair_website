@@ -56,24 +56,24 @@ Cart
                           <td>
                             <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
                               <div class="input-group-prepend">
-                                <a href="" class="btn btn-outline-black decrease" type="button">&minus;</a>
+                                <a href="{% url 'remove_cart' carts.product.id %}" class="btn btn-outline-black decrease" type="button">&minus;</a>
                               </div>
                               <input type="text" class="form-control text-center quantity-amount" value="{{carts.quantity}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                               <div class="input-group-append">
-                                <a href='' class="btn btn-outline-black increase" type="button">&plus;</a>
+                                <a href='{% url "add_cart" carts.product.id %}' class="btn btn-outline-black increase" type="button">&plus;</a>
                               </div>
                             </div>
         
                           </td>
                           <td>${{carts.sub_total}}</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
+                          <td><a href="{% url 'remove_cart_item' carts.product.id %}" class="btn btn-black btn-sm">X</a></td>
                         </tr>
                         {% endfor %}
                         {% else %}
                         <tr>
                           <td colspan="6" class="text-center py-5">
                             <h4>Your cart is empty</h4>
-                            <a href="{% url 'shop' %}" class="btn btn-primary mt-3">Continue Shopping</a>
+                           
                           </td>
                         </tr>
                         {% endif %}
@@ -86,11 +86,9 @@ Cart
               <div class="row">
                 <div class="col-md-6">
                   <div class="row mb-5">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                      <button class="btn btn-black btn-sm btn-block">Update Cart</button>
-                    </div>
+                   
                     <div class="col-md-6">
-                      <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
+                      <a href="{% url 'shop' %}" class="btn btn-outline-black btn-sm btn-block">Continue Shopping</a>
                     </div>
                   </div>
                   
