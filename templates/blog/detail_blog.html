@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Blog Detail
+{% endblock title %}
+
+{% block content %}
+
+<!-- Start Hero Section -->
+<div class="hero">
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-lg-5">
+				<div class="intro-excerpt">
+					<h1>Amazing Blog Post Title</h1>
+					<p class="blog-meta">
+						<span><i class="fas fa-user"></i>{{blog.user}}</span> | 
+						<span><i class="fas fa-calendar"></i> {{blog.created_at|date:"d M Y"}}</span>
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-7">
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Hero Section -->
+
+<!-- Start Blog Detail Section -->
+<div class="untree_co-section blog-detail-main">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-10">
+				
+				<!-- Blog Featured Image -->
+				<div class="blog-featured-image mb-5">
+					<img src="{{blog.image.url}}" class="img-fluid rounded" alt="Blog Image">
+				</div>
+
+				<!-- Blog Content -->
+				<div class="blog-content-wrapper">
+					{{blog.description|safe}}
+				</div>
+
+			
+
+				<!-- Navigation Buttons -->
+				<div class="blog-navigation">
+					<a href="{% url 'blog' %}" class="btn btn-secondary">
+						<i class="fas fa-arrow-left"></i> Back to Blogs
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Blog Detail Section -->
+
+{% endblock %}
+

@@ -45,7 +45,7 @@
 						
 					<!-- Start Column 2 -->
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
+						<a class="product-item" href="{{item.get_url}}">
 							<img src="{{item.image.url}}" class="img-fluid product-thumbnail">
 							<h3 class="product-title">{{item.product_name}}</h3>
 							<strong class="product-price">${{item.price}}</strong>
@@ -62,4 +62,35 @@
 				</div>
 			</div>
 		</div>
+			<!-- Start Blog Section -->
+		<div class="blog-section">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md-6">
+						<h2 class="section-title">Recent Blog</h2>
+					</div>
+					<div class="col-md-6 text-start text-md-end">
+						<a href="{% url 'blog' %}" class="more">View All Posts</a>
+					</div>
+				</div>
+				
+				<div class="row">
+					{% for blogs in blog %}
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="{{blogs.get_url}}" class="post-thumbnail"><img src="{{blogs.image.url}}" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="{{blogs.get_url}}">{{blogs.blog_title}}</a></h3>
+								<div class="meta">
+									<span>by {{blogs.user}}</span> <span>on {{blogs.created_at|date:"d M Y"}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				
+			</div>
+		</div>
+		<!-- End Blog Section -->	
 {% endblock %}
