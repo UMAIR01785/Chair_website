@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block title %}Profile Management{% endblock title %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/profile.css">
+{% endblock extra_css %}
+
+{% block content %}
+  <section class="profile-section">
+    <div class="container py-5">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-4 mb-4">
+          <div class="profile-sidebar">
+            <div class="profile-sidebar__header">
+              <div class="profile-avatar">
+                {% if form.instance.image %}
+                  <img src="{{ form.instance.image.url }}" alt="Profile Picture">
+                {% else %}
+                  <img src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%233b5d50%22/%3E%3Ctext x=%2250%22 y=%2260%22 font-size=%2240%22 fill=%22%23f9bf29%22 text-anchor=%22middle%22 font-family=%22Arial%22%3EJD%3C/text%3E%3C/svg%3E" alt="Default Avatar">
+                {% endif %}
+                <div class="profile-avatar__badge">
+                  <i class="fa-solid fa-camera"></i>
+                </div>
+              </div>
+              <h2 class="profile-sidebar__name">{{request.user.username}}</h2>
+              <p class="profile-sidebar__email">{{request.user.email}}</p>
+              <span class="profile-sidebar__status">Active Member</span>
+            </div>
+
+            <nav class="profile-nav">
+              <a href="{% url 'profile' %}" class="profile-nav__item profile-nav__item--active">
+                <i class="fa-solid fa-user"></i>
+                <span>Personal Info</span>
+              </a>
+              
+              <a href="{% url 'dashboard' %}" class="profile-nav__item">
+                <i class="fa-solid fa-dashboard"></i>
+                <span>Dashboard</span>
+              </a>
+              <a href="/order/" class="profile-nav__item">
+                <i class="fa-solid fa-box"></i>
+                <span>My Orders</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-8">
+          <div class="profile-content">
+            <div class="profile-content__header">
+              <div>
+                <h1 class="profile-content__title">Profile Settings</h1>
+                <p class="profile-content__subtitle">Manage your account information</p>
+              </div>
+              <div class="profile-content__actions">
+                <button type="button" class="btn-icon" title="Edit">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="profile-form-wrapper">
+              <form class="profile-form" action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
+                <!-- Profile Picture Section -->
+                 {% csrf_token %}
+                <div class="form-section">
+                  <h3 class="form-section__title">
+                    <i class="fa-solid fa-image"></i>
+                    Profile Picture
+                  </h3>
+                  
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label" for="image">Upload Profile Image</label>
+                      <input
+                        class="form-control"
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept="image/*"
+                      />
+                      <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max 5MB)</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                  <h3 class="form-section__title">
+                    <i class="fa-solid fa-user-circle"></i>
+                    Personal Information
+                  </h3>
+                  
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="username">Username</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="username"
+                          value="{{request.user.username}}"
+                          readonly
+                          placeholder="Enter username"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="email">Email Address</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+                        <input
+                          class="form-control"
+                          type="email"
+                          id="email"
+                          value="{{request.user.email}}"
+                          readonly
+                          name="email"
+                          placeholder="Enter email"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="first_name">First Name</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="first_name"
+                          name="first_name"
+                          value="{{form.first_name.value|default:''}}"
+                          placeholder="Enter first name"
+                          maxlength="50"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="last_name">Last Name</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="last_name"
+                          name="last_name"
+                          value="{{form.last_name.value|default:''}}"
+                          placeholder="Enter last name"
+                          maxlength="40"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bio Section -->
+                <div class="form-section">
+                  <h3 class="form-section__title">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    About You
+                  </h3>
+                  
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label" for="bio">Bio</label>
+                      <textarea
+                        class="form-control"
+                        id="bio"
+                        name="bio"
+                        rows="5"
+                        placeholder="Tell us about yourself..."
+                      >{{form.bio.value|default:''}}</textarea>
+                      <small class="form-text text-muted">Write a brief description about yourself</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-save"></i>
+                    Save Changes
+                  </button>
+                  <button type="reset" class="btn btn-outline">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+    
+    

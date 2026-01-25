@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+{% endblock extra_css %}
+
+{% block content %}
+  <!-- Start Hero Section -->
+  <div class="hero dashboard-hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="intro-excerpt">
+            <div class="welcome-badge">
+              <i class="fa-solid fa-sparkles"></i>
+              <span>Welcome to Your Dashboard</span>
+            </div>
+            <h1 class="dashboard-hero__title">
+              Hello, <span class="highlight-text">{{user.username}}</span>
+            </h1>
+            <p class="mb-4 dashboard-hero__subtitle">Ready to explore amazing furniture? Your personalized shopping hub awaits with exclusive features and seamless tracking.</p>
+            <div class="dashboard-hero__actions">
+              <a href="{% url 'shop' %}" class="btn btn-secondary me-2">
+                <i class="fa-solid fa-store"></i> Start Shopping
+              </a>
+              <a href="/order/" class="btn btn-white-outline">
+                <i class="fa-solid fa-box"></i> My Orders
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="dashboard-illustration">
+            <div class="floating-card floating-card-1">
+              <i class="fa-solid fa-shopping-bag"></i>
+              <div>
+                <strong>12</strong>
+                <span>Orders</span>
+              </div>
+            </div>
+            <div class="floating-card floating-card-2">
+              <i class="fa-solid fa-heart"></i>
+              <div>
+                <strong>8</strong>
+                <span>Saved</span>
+              </div>
+            </div>
+            <div class="floating-card floating-card-3">
+              <i class="fa-solid fa-star"></i>
+              <div>
+                <strong>24</strong>
+                <span>Reviews</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Hero Section -->
+
+  <!-- Start Stats Cards Section -->
+  <div class="dashboard-stats-section">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-6 col-md-6 col-lg-3">
+          <div class="modern-stat-card modern-stat-card--purple">
+            <div class="modern-stat-card__icon">
+              <i class="fa-solid fa-shopping-cart"></i>
+            </div>
+            <div class="modern-stat-card__content">
+              <h3 class="modern-stat-card__value">12</h3>
+              <p class="modern-stat-card__label">Total Orders</p>
+            </div>
+            <div class="modern-stat-card__bg-icon">
+              <i class="fa-solid fa-shopping-cart"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-6 col-lg-3">
+          <div class="modern-stat-card modern-stat-card--pink">
+            <div class="modern-stat-card__icon">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="modern-stat-card__content">
+              <h3 class="modern-stat-card__value">8</h3>
+              <p class="modern-stat-card__label">Wishlist Items</p>
+            </div>
+            <div class="modern-stat-card__bg-icon">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-6 col-lg-3">
+          <div class="modern-stat-card modern-stat-card--orange">
+            <div class="modern-stat-card__icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <div class="modern-stat-card__content">
+              <h3 class="modern-stat-card__value">{{count}}</h3>
+              <p class="modern-stat-card__label">Blog Posts</p>
+            </div>
+            <div class="modern-stat-card__bg-icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-6 col-lg-3">
+          <div class="modern-stat-card modern-stat-card--blue">
+            <div class="modern-stat-card__icon">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="modern-stat-card__content">
+              <h3 class="modern-stat-card__value">24</h3>
+              <p class="modern-stat-card__label">Reviews</p>
+            </div>
+            <div class="modern-stat-card__bg-icon">
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Stats Cards Section -->
+
+  <!-- Start Quick Access Section -->
+  <div class="product-section dashboard-quick-access">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-12 text-center">
+          <h2 class="section-title mb-2">Quick Access</h2>
+          <p class="section-subtitle">Navigate to your favorite sections with ease</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <a class="modern-action-card" href="{% url 'profile' %}">
+            <div class="modern-action-card__icon-wrap">
+              <div class="modern-action-card__icon modern-action-card__icon--gradient-1">
+                <i class="fa-solid fa-user"></i>
+              </div>
+            </div>
+            <div class="modern-action-card__content">
+              <h3 class="modern-action-card__title">My Profile</h3>
+              <p class="modern-action-card__description">Manage your personal information and preferences</p>
+            </div>
+            <div class="modern-action-card__arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <a class="modern-action-card" href="{% url 'blog_cart' %}">
+            <div class="modern-action-card__icon-wrap">
+              <div class="modern-action-card__icon modern-action-card__icon--gradient-2">
+                <i class="fa-solid fa-blog"></i>
+              </div>
+            </div>
+            <div class="modern-action-card__content">
+              <h3 class="modern-action-card__title"> Blog Detail</h3>
+              <p class="modern-action-card__description">Discover furniture tips, trends and inspiration</p>
+            </div>
+            <div class="modern-action-card__arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <a class="modern-action-card" href="{% url 'logout' %}">
+            <div class="modern-action-card__icon-wrap">
+              <div class="modern-action-card__icon modern-action-card__icon--gradient-3">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </div>
+            </div>
+            <div class="modern-action-card__content">
+              <h3 class="modern-action-card__title">Logout</h3>
+              <p class="modern-action-card__description">Securely sign out from your account</p>
+            </div>
+            <div class="modern-action-card__arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Quick Access Section -->
+
+  <!-- Start Feature Actions Section -->
+  <div class="product-section pt-0">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-12 text-center">
+          <h2 class="section-title mb-2">Explore More</h2>
+          <p class="section-subtitle">Discover all the features we offer</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <a class="gradient-product-card gradient-product-card--green" href="{% url 'cart'%}">
+            <div class="gradient-product-card__icon">
+              <i class="fa-solid fa-shopping-cart"></i>
+            </div>
+            <h3 class="gradient-product-card__title">Shopping Cart</h3>
+            <p class="gradient-product-card__description">Review items in your cart</p>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <a class="gradient-product-card gradient-product-card--purple" href="/order/">
+            <div class="gradient-product-card__icon">
+              <i class="fa-solid fa-box"></i>
+            </div>
+            <h3 class="gradient-product-card__title">My Orders</h3>
+            <p class="gradient-product-card__description">Track your order history</p>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <a class="gradient-product-card gradient-product-card--orange" href="{% url 'about' %}">
+            <div class="gradient-product-card__icon">
+              <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <h3 class="gradient-product-card__title">About Us</h3>
+            <p class="gradient-product-card__description">Learn more about our story</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Feature Actions Section -->
+{% endblock content %}

@@ -1,0 +1,94 @@
+/* Login page styles (scoped) */
+
+.login-section {
+  padding: 20px 0;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(47, 47, 47, 0.12);
+  border: 1px solid rgba(47, 47, 47, 0.06);
+}
+
+.login-card__header {
+  padding: 22px 22px 14px;
+  background: linear-gradient(135deg, #3b5d50 0%, #2f2f2f 100%);
+  color: #ffffff;
+}
+
+.login-card__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.login-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.login-card__title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.login-card__subtitle {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+}
+
+.login-card__body {
+  padding: 22px;
+}
+
+.login-form .form-label {
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.login-form .input-group-text {
+  background: #eff2f1;
+  border-color: rgba(47, 47, 47, 0.12);
+}
+
+.login-form .form-control {
+  border-color: rgba(47, 47, 47, 0.12);
+}
+
+.login-form .form-control:focus {
+  border-color: #3b5d50;
+  box-shadow: 0 0 0 0.2rem rgba(59, 93, 80, 0.18);
+}
+
+.login-form__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.login-form__link {
+  color: #3b5d50;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-form__link:hover {
+  color: #314d43;
+  text-decoration: underline;
+}
+
+.login-form__footer {
+  text-align: center;
+  color: #6a6a6a;
+}

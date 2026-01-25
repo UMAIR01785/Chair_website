@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock title %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/login.css">
+{% endblock extra_css %}
+
+{% block content %}
+  <section class="login-section">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-6">
+          <div class="login-card">
+            <div class="login-card__header">
+              <div class="login-card__brand">
+                <div class="login-card__icon" aria-hidden="true">
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                </div>
+                <div>
+                  <h1 class="login-card__title">Welcome back</h1>
+                  <p class="login-card__subtitle">Sign in to continue shopping</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="login-card__body">
+              <form class="login-form" action="/account/login/" method="POST" autocomplete="on">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                  <label class="form-label" for="id_username">Username</label>
+                  <div class="input-group">
+                    <span class="input-group-text" aria-hidden="true"><i class="fa-regular fa-user"></i></span>
+                    <input
+                      class="form-control"
+                      type="text"
+                      id="id_username"
+                      name="username"
+                      placeholder="Enter your username"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label" for="id_password">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+                    <input
+                      class="form-control"
+                      type="password"
+                      id="id_password"
+                      name="password"
+                      placeholder="Enter your password"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="login-form__row mb-3">
+                 
+                  <a class="login-form__link" href="#">Forgot password?</a>
+                </div>
+
+                <button class="btn btn-primary w-100" type="submit">Login</button>
+
+                <p class="login-form__footer mt-3 mb-0">
+                  Don’t have an account?
+                  <a class="login-form__link" href="{% url 'register' %}">Create one</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

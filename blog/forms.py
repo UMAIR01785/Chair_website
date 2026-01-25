@@ -5,4 +5,4 @@ from django import forms
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields=['blog_title','image','description']
+        fields=['blog_title','image','description','is_feature']

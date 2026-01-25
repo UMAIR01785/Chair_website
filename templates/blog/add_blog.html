@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit Blog
+{% endblock title %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/profile.css">
+{% endblock extra_css %}
+
+{% block content %}
+  <section class="profile-section">
+    <div class="container py-5">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-4 mb-4">
+          <div class="profile-sidebar">
+            <div class="profile-sidebar__header">
+              <div class="profile-avatar">
+                <img src="" alt="Blog" id="previewImage">
+                <div class="profile-avatar__badge">
+                  <i class="fa-solid fa-camera"></i>
+                </div>
+              </div>
+              <h2 class="profile-sidebar__name" id="previewTitle">New Blog</h2>
+              <p class="profile-sidebar__email">Author</p>
+              <span class="profile-sidebar__status">Draft</span>
+            </div>
+
+            <nav class="profile-nav">
+              <a href="{% url 'blog_cart' %}" class="profile-nav__item">
+                <i class="fa-solid fa-list"></i>
+                <span>My Blogs</span>
+              </a>
+              <a href="{% url 'blog' %}" class="profile-nav__item">
+                <i class="fa-solid fa-globe"></i>
+                <span>All Blogs</span>
+              </a>
+              <a href="{% url 'dashboard' %}" class="profile-nav__item">
+                <i class="fa-solid fa-dashboard"></i>
+                <span>Dashboard</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-8">
+          <div class="profile-content">
+            <div class="profile-content__header">
+              <div>
+                <h1 class="profile-content__title">Blog Editor</h1>
+                <p class="profile-content__subtitle">Create or edit your blog post</p>
+              </div>
+              <div class="profile-content__actions">
+                <button type="button" class="btn-icon" title="Preview">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="profile-form-wrapper">
+              <form action="{% url 'add_blog' %}" class="profile-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Blog Cover Image Section -->
+                <div class="form-section">
+                  <h3 class="form-section__title">
+                    <i class="fa-solid fa-image"></i>
+                    Cover Image
+                  </h3>
+                  
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label" for="image">Upload Cover Image</label>
+                      <input
+                        class="form-control"
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept="image/*"
+                      />
+                      <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max 5MB)</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Blog Content Section -->
+                <div class="form-section">
+                  <h3 class="form-section__title">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Blog Content
+                  </h3>
+                  
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label" for="blog_title">Blog Title</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-heading"></i></span>
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="blog_title"
+                          name="blog_title"
+                          placeholder="Enter blog title"
+                          maxlength="50"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label" for="description">Description</label>
+                      <textarea
+                        class="form-control"
+                        id="description"
+                        name="description"
+                        rows="12"
+                        placeholder="Write your blog content here..."
+                        required
+                      ></textarea>
+                      <small class="form-text text-muted">Share your story, ideas, or insights</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div class="form-section">
+                  <h3 class="form-section__title">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                  </h3>
+                  
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="is_feature"
+                          name="is_feature"
+                          
+                        />
+                        <label class="form-check-label" for="is_feature">
+                          <strong>Mark as Featured</strong>
+                          <small class="d-block text-muted">Featured blogs will be highlighted on the homepage</small>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-save"></i>
+                    Save & Publish
+                  </button>
+                  <a href="/blog/blog_cart/" class="btn btn-outline">
+                    <i class="fa-solid fa-times"></i>
+                    Cancel
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+    
+    

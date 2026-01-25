@@ -858,5 +858,31 @@ textarea {
     margin-right: 6px;
     color: #f9bf29; }
 
+/* Create Blog Button */
+.btn-create-blog {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: #3b5d50;
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 93, 80, 0.2); }
+  .btn-create-blog:hover {
+    background: #2f4a3f;
+    color: #f9bf29;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 93, 80, 0.3);
+    text-decoration: none; }
+  .btn-create-blog i {
+    font-size: 16px; }
+  .btn-create-blog:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(59, 93, 80, 0.2); }
+
 
 
