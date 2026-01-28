@@ -26,7 +26,7 @@ def blog_cart(request):
         'blog':blog
     }
     return render(request,'blog/blog_all.html',context)
-
+@login_required(login_url='login')
 def edit_blog(request,slug):
     blog=get_object_or_404(Blog,slug=slug)
     if request.method == "POST":
@@ -44,7 +44,7 @@ def edit_blog(request,slug):
 
 
     return render(request,'blog/edit_blog.html',context)
-
+@login_required(login_url='login')
 def add_blog(request):
     if request.method == "POST":
         form=BlogForm(request.POST, request.FILES)
@@ -60,7 +60,7 @@ def add_blog(request):
     }
     return render(request,'blog/add_blog.html',context)
 
-
+@login_required(login_url='login')
 def delete_blog(request,slug):
     blog=get_object_or_404(Blog ,slug=slug)
     blog.delete()

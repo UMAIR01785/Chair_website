@@ -9,3 +9,5 @@ def create_profile(sender,instance ,created, **kwargs):
         Profile.objects.create(
             user=instance
         )
+
+

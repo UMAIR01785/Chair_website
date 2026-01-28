@@ -1,11 +1,151 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block title %}
-Order
+Checkout - Complete Your Order
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/order.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-
+<!-- Order Section Start -->
+<div class="order-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="section-title mb-5">Checkout</h2>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Left Side - Order Form -->
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="order-form-wrapper">
+                    <h3 class="form-title mb-4">Billing Details</h3>
+                    
+                    <form href="{% url 'order' %}" method="POST" id="order-form" class="order-form">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">First Name <span class="required">*</span></label>
+                                <input type="text" name="first_name" class="form-control" required>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Last Name <span class="required">*</span></label>
+                                <input type="text" name="last_name" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Email Address <span class="required">*</span></label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number <span class="required">*</span></label>
+                            <input type="text" name="phone_number" class="form-control" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Country <span class="required">*</span></label>
+                            <input type="text" name="country" class="form-control" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">State <span class="required">*</span></label>
+                                <input type="text" name="state" class="form-control" required>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">City <span class="required">*</span></label>
+                                <input type="text" name="city" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Address Line 1 <span class="required">*</span></label>
+                            <input type="text" name="address1" class="form-control" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Address Line 2</label>
+                            <input type="text" name="address2" class="form-control">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label">Order Notes (Optional)</label>
+                            <textarea name="order_note" class="form-control" rows="4"></textarea>
+                            <small class="form-text">Notes about your order, e.g. special delivery instructions</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Right Side - Cart Summary -->
+            <div class="col-lg-5">
+                <div class="cart-summary-wrapper">
+                    <h3 class="summary-title mb-4">Your Order</h3>
+                    
+                    <div class="order-summary">
+                        <!-- Cart Items -->
+                         
+                         {% for item in cartitem %}
+                            
+                         
+                            
+                        <div class="order-items">
+                            <div class="order-item">
+                                <div class="item-details">
+                                    <div class="item-image">
+                                        <img src="{{item.product.image.url}}" alt="Product">
+                                    </div>
+                                    <div class="item-info">
+                                        <h5 class="item-name">{{item.product.product_name}}</h5>
+                                        <p class="item-quantity">Quantity: {{item.quantity}}</p>
+                                    </div>
+                                </div>
+                                <div class="item-price">
+                                    {{item.sub_total}}
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+                        
+                        <!-- Order Totals -->
+                        <div class="order-totals">
+                           
+                            
+                            
+                            
+                            <div class="total-row grand-total-row">
+                                <span class="total-label">Total:</span>
+                                <span class="total-value">${{total}}</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Methods -->
+                        <div class="payment-methods">
+                            
+                        <!-- Place Order Button -->
+                        <div class="order-actions">
+                            <button type="submit" form="order-form" class="btn btn-place-order">
+                                <i class="fas fa-lock"></i> Place Order
+                            </button>
+                            <p class="secure-notice">
+                                <i class="fas fa-shield-alt"></i> Your personal data will be used to process your order
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Order Section End -->
 
 {% endblock %}
