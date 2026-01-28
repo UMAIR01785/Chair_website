@@ -6,7 +6,7 @@ from . forms import ProfileForm
 from django.contrib.auth.models import User
 from .models import Profile
 from blog.models import Blog
-
+from order.models import Order
 
 # Create your views here.
 def register(request):
@@ -50,12 +50,15 @@ def logout(request):
 
 @login_required(login_url='login')
 def dashboard(request):
+   order=Order.objects.filter(user=request.user)
+   order_count=order.count()
    blog=Blog.objects.all()
    count=blog.count()
    user=request.user
    context={
        'user':user,
-       'count':count
+       'count':count,
+       'order_count':order_count
    }
    return render(request,'account/dashboard.html',context)
 

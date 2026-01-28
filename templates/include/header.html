@@ -11,14 +11,14 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						
+						<li {% if request.path == '/' %}class="active"{% endif %}>
 							<a class="nav-link" href="/">Home</a>
-						
-						<li><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
-						<li><a class="nav-link" href="{% url 'about' %}">About us</a></li>
-						<li><a class="nav-link" href="{% url 'services' %}">Services</a></li>
-						<li><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
-						<li><a class="nav-link" href="{% url 'contact' %}">Contact us</a></li>
+						</li>
+						<li {% if 'shop' in request.path %}class="active"{% endif %}><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
+						<li {% if 'about' in request.path %}class="active"{% endif %}><a class="nav-link" href="{% url 'about' %}">About us</a></li>
+						<li {% if 'services' in request.path %}class="active"{% endif %}><a class="nav-link" href="{% url 'services' %}">Services</a></li>
+						<li {% if 'blog' in request.path %}class="active"{% endif %}><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
+						<li {% if 'contact' in request.path %}class="active"{% endif %}><a class="nav-link" href="{% url 'contact' %}">Contact us</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">

@@ -1,84 +1,115 @@
 {% load static %}
 		<!-- Start Footer Section -->
-		<footer class="footer-section">
+		<footer class="footer-section footer-modern">
+			<!-- Decorative Elements -->
+			<div class="footer-decorative">
+				<div class="footer-circle-1"></div>
+				<div class="footer-circle-2"></div>
+			</div>
+
 			<div class="container relative">
 
 				<div class="sofa-img">
 					<img src="{% static 'images/sofa.png' %}" alt="Image" class="img-fluid">
 				</div>
 
-				<div class="row">
-					<div class="col-lg-8">
-						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="{% static 'images/envelope-outline.svg' %}" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
+				
 
-							<form action="#" class="row g-3">
-								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Enter your name">
-								</div>
-								<div class="col-auto">
-									<input type="email" class="form-control" placeholder="Enter your email">
-								</div>
-								<div class="col-auto">
-									<button class="btn btn-primary">
-										<span class="fa fa-paper-plane"></span>
-									</button>
-								</div>
-							</form>
-
+				<!-- Main Footer Content -->
+				<div class="row g-5 mb-5 mt-5">
+					<div class="col-lg-4 col-md-6">
+						<div class="mb-4 footer-logo-wrap">
+							<a href="{% url 'home' %}" class="footer-logo">
+								Furni<span class="footer-logo-dot">.</span>
+							</a>
 						</div>
-					</div>
-				</div>
+						<p class="mb-4 footer-description">Transform your living space with our exquisite furniture collection. Quality craftsmanship meets modern design to create the home of your dreams.</p>
 
-				<div class="row g-5 mb-5">
-					<div class="col-lg-4">
-						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
-						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
-
-						<ul class="list-unstyled custom-social">
-							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+						<ul class="list-unstyled custom-social d-flex gap-3 mt-4">
+							<li>
+								<a href="#" class="social-link">
+									<span class="fa fa-brands fa-facebook-f"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="social-link">
+									<span class="fa fa-brands fa-twitter"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="social-link">
+									<span class="fa fa-brands fa-instagram"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="social-link">
+									<span class="fa fa-brands fa-linkedin"></span>
+								</a>
+							</li>
 						</ul>
 					</div>
 
-					<div class="col-lg-8">
-						<div class="row links-wrap">
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">About us</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Contact us</a></li>
-								</ul>
-							</div>
+					<div class="col-lg-2 col-md-6 col-6">
+						<h4 class="footer-heading">
+							Quick Links
+							<span class="footer-heading-line"></span>
+						</h4>
+						<ul class="list-unstyled footer-links">
+							<li>
+								<a href="{% url 'about' %}" class="footer-link">
+									<i class="fa fa-angle-right me-2"></i>About Us
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'services' %}" class="footer-link">
+									<i class="fa fa-angle-right me-2"></i>Services
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'blog' %}" class="footer-link">
+									<i class="fa fa-angle-right me-2"></i>Blog
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'contact' %}" class="footer-link">
+									<i class="fa fa-angle-right me-2"></i>Contact Us
+								</a>
+							</li>
+						</ul>
+					</div>
 
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Support</a></li>
-									<li><a href="#">Knowledge base</a></li>
-									<li><a href="#">Live chat</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Jobs</a></li>
-									<li><a href="#">Our team</a></li>
-									<li><a href="#">Leadership</a></li>
-									<li><a href="#">Privacy Policy</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Nordic Chair</a></li>
-									<li><a href="#">Kruzo Aero</a></li>
-									<li><a href="#">Ergonomic Chair</a></li>
-								</ul>
-							</div>
-						</div>
+					
+					<div class="col-lg-3 col-md-6">
+						<h4 class="footer-heading">
+							Contact Info
+							<span class="footer-heading-line"></span>
+						</h4>
+						<ul class="list-unstyled footer-contact">
+							<li class="mb-3">
+								<div class="d-flex align-items-start">
+									<i class="fa fa-map-marker-alt mt-1 me-3 contact-icon"></i>
+									<span>123 Furniture Street, Design City, DC 12345</span>
+								</div>
+							</li>
+							<li class="mb-3">
+								<div class="d-flex align-items-center">
+									<i class="fa fa-phone me-3 contact-icon"></i>
+									<span>+1 (555) 123-4567</span>
+								</div>
+							</li>
+							<li class="mb-3">
+								<div class="d-flex align-items-center">
+									<i class="fa fa-envelope me-3 contact-icon"></i>
+									<span>info@furni.com</span>
+								</div>
+							</li>
+							<li>
+								<div class="d-flex align-items-center">
+									<i class="fa fa-clock me-3 contact-icon"></i>
+									<span>Mon - Sat: 9AM - 8PM</span>
+								</div>
+							</li>
+						</ul>
 					</div>
 
 				</div>

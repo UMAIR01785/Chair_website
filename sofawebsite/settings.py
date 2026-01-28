@@ -133,3 +133,13 @@ STATICFILES_DIRS = [
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
+
+
+
+EMAIL_BACKEND=config('Email_backend')
+EMAIL_HOST=config('email_host')
+EMAIL_PROT=config('email_port')
+EMAIL_USE_TLS=config('email_use_tls')
+
+EMAIL_USER=config('email_user')
+EMAIL_PASSWORD=config('email_password')
